@@ -1,2 +1,2 @@
 # ManFashionProject
-This is my SoftUni Cource Full Project
+This is my SoftUni Course Full Project
