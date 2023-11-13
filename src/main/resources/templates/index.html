@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="bgn">
-<head>
-    <title>Page Title</title>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/head}">
 </head>
 <body>
+
+<div>
+    <nav th:replace="~{fragments/navbar}"></nav>
+</div>
 
 <h1>This is a Bullshit</h1>
 <p>This is a paragraph.</p>
