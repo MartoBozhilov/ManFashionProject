@@ -32,23 +32,18 @@ public class UserController {
         return "user-register";
     }
 
-    @ModelAttribute("userModel")
-    public UserRegistrationDTO initUserModel() {
-        return new UserRegistrationDTO();
-    }
-
     @PostMapping("/users/register")
-    public String register(@Valid UserRegistrationDTO userModel,
+    public String register(@ModelAttribute("userRegistrationDTO") @Valid UserRegistrationDTO userRegistrationDTO,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("userModel", userModel);
+            redirectAttributes.addFlashAttribute("userModel", userRegistrationDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel", bindingResult);
             return "redirect:/users/register";
         }
 
-        userService.register(userModel);
+        userService.register(userRegistrationDTO);
 
         return "redirect:/";
     }
