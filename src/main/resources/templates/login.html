@@ -1,10 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head}">
 </head>
 <body>
+
+<nav th:replace="~{fragments/navbar}"></nav>
+
+<main>
+    <form th:method="post"
+          th:action="@{/users/login}"
+          class="mx-auto w-25 bg-blur">
+        <div class="text-center">
+            <br>
+            <h4>Login</h4>
+            <br>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="text"
+                   name="email"
+                   id="email"
+                   class="form-control"/>
+            <label class="form-label" for="email">Email address</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="password"
+                   name="password"
+                   id="password"
+                   class="form-control"/>
+            <label class="form-label" for="password">Password</label>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           name="rememberme"
+                           id="rememberme"/>
+                    <label class="form-check-label" for="rememberme"> Remember me </label>
+                </div>
+            </div>
+        </div>
+
+        <p th:if="${bad_credentials}" class="errors alert alert-danger">
+            Invalid username or password.
+        </p>
+
+        <div class="text-center">
+                <div class="text-center">
+                    <input type="submit" class="btn btn-info btn-lg" value="Login"/>
+                </div>
+        </div>
+        <br>
+        <div class="text-center">
+            <p>Not a member? <a th:href="@{/users/register}">Register</a></p>
+        </div>
+    </form>
+</main>
 
 </body>
 </html>
